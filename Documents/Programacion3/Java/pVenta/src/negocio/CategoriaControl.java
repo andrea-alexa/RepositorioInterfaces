@@ -34,16 +34,17 @@ public class CategoriaControl {
         
         String estado;
         String[] registro = new String[4];
+        this.registrosMostrados = 0;
         
         for(Categoria item : lista)
         {
             if(item.isActivo())
             {
-                estado = "activo";
+                estado = "Activo";
             }
             else
             {
-                estado = "inactivo";
+                estado = "Inactivo";
             }
             
             registro[0] = Integer.toString(item.getId());
@@ -78,7 +79,7 @@ public class CategoriaControl {
         }
     }
     
-    public String actualizar (int id, String nombre, String nombreAnterior,String descripcion )
+    public String actualizar (int id, String nombre, String nombreAnterior, String descripcion)
     {
         if (!nombre.equals(nombreAnterior)) {
             if (DATOS.exist(nombre)) {

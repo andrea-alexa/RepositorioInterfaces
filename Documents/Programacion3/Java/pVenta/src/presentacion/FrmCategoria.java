@@ -5,6 +5,7 @@
 package presentacion;
 
 import entidades.Categoria;
+import java.util.HashSet;
 import javax.swing.JOptionPane;
 import negocio.CategoriaControl;
 
@@ -279,6 +280,8 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
         tabGeneral.setEnabledAt(0, false);
         tabGeneral.setSelectedIndex(1);
         this.accion = "Guardar";
+        btnGuardar.setText("Guardar");
+        
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -291,7 +294,7 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         if(txtNombre.getText().length() == 0 || txtNombre.getText().length()>30)
         {
-            JOptionPane.showMessageDialog(this,"Nombre es obligatorio", "Systema", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Nombre 30 caracteres maximo", "Systema", JOptionPane.WARNING_MESSAGE);
             txtNombre.requestFocus();
             return;
         }
@@ -306,9 +309,7 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
         
         if(this.accion.equals("editar"))
         {
-            if(this.accion.equals("editar"))
-            {
-                respuesta = this.CONTROL.actualizar(Integer.parseInt(txtId.getText()), txtNombre.getText(), this.nombreAnt, txtDescripcion.getText());
+            respuesta = this.CONTROL.actualizar(Integer.parseInt(txtId.getText()), txtNombre.getText(), this.nombreAnt, txtDescripcion.getText());
                 
                 if(respuesta.equals("OK"))
                 {
@@ -324,21 +325,6 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
                 {
                     this.mensajeError(respuesta);
                 }
-            }
-            else 
-            {
-                respuesta = this.CONTROL.Insertar(txtNombre.getText(), txtDescripcion.getText());
-                if (respuesta.equals("OK")) 
-                {
-                        this.mensajeOk("Registrado Correctamente");
-                        this.limpiar();
-                        this.listar("");
-                } 
-                else
-                {
-                this.mensajeError(respuesta);
-                }
-            }
         }
         else
         {
@@ -360,19 +346,19 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
         if(tablaListado.getSelectedRowCount()== 1)
         {
             String id = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 0));
-                String nombre = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 1));
-                String descripcion = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 2));
-                nombreAnt = nombre = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 1));
+            String nombre = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 1));
+            String descripcion = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 2));
+            nombreAnt = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 1));
 
-                txtId.setText(id);
-                txtNombre.setText(descripcion);
-                txtDescripcion.setText(descripcion);
+            txtId.setText(id);
+            txtNombre.setText(nombre);
+            txtDescripcion.setText(descripcion);
                 
-                tabGeneral.setEnabledAt(0, false);
-                tabGeneral.setEnabledAt(1, true);
-                tabGeneral.setSelectedIndex(1);
-                this.accion = "editar";
-                btnGuardar.setText("Editar");
+            tabGeneral.setEnabledAt(0, false);
+            tabGeneral.setEnabledAt(1, true);
+            tabGeneral.setSelectedIndex(1);
+            this.accion = "editar";
+            btnGuardar.setText("Editar");
         }
         else{
             this.mensajeError("Selecciona un registro");

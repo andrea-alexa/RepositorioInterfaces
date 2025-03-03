@@ -32,16 +32,14 @@ public class CategoriaDAO implements CRUDGeneralInterface<Categoria>{
     public List<Categoria> getAll(String list) {
         List<Categoria> registros = new ArrayList();
         try{
-           ps = conectar.conectar().prepareStatement
-        ("SELECT * FROM categoria WHERE nombre like ?");
+            ps = conectar.conectar().prepareStatement("SELECT * FROM categoria WHERE nombre like ?");
             ps.setString(1,"%" + list + "%");
             rs = ps.executeQuery();
-            while(rs.next()){
-                registros.add(new Categoria 
-        (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getBoolean(4)));
+            while (rs.next()){
+                registros.add(new Categoria(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getBoolean(4)));
             }
             ps.close();
-            rs.close(); 
+            rs.close();
         }
         catch(SQLException e){
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -58,23 +56,28 @@ public class CategoriaDAO implements CRUDGeneralInterface<Categoria>{
     public boolean insert(Categoria object) {
         resp = false;
         try {
-            ps = conectar.conectar().prepareStatement("INSERT INTO categoria(?,?,1)");
+            ps = conectar.conectar().prepareStatement("INSERT INTO categoria(nombre, descripcion, estado) VALUES (?, ?, 1)");
             ps.setString(1, object.getNombre());
-            ps.setString(1, object.getDescripcion());
-            if(ps.executeUpdate() > 0){
+            ps.setString(2, object.getDescripcion());
+
+            if (ps.executeUpdate() > 0)
+            {
                 resp = true;
                 ps.close();
             }
         }
-        catch (SQLException e) {
+        catch (SQLException e)
+        {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
-        finally{
+        finally
+        {
             ps = null;
             conectar.desconectar();
         }
         return resp;
     }
+
 
     @Override
     public boolean update(Categoria object) {
@@ -83,7 +86,7 @@ public class CategoriaDAO implements CRUDGeneralInterface<Categoria>{
             ps = conectar.conectar().prepareStatement
         ("Update categoria Set nombre=?, descripcion=? where id = ?");
             ps.setString(1, object.getNombre());
-            ps.setString(1, object.getDescripcion());
+            ps.setString(2, object.getDescripcion());
             ps.setInt(3, object.getId());
             if(ps.executeUpdate() > 0){
                 resp = true;
@@ -126,7 +129,7 @@ public class CategoriaDAO implements CRUDGeneralInterface<Categoria>{
         resp = false;
         try {
             ps = conectar.conectar().prepareStatement
-        ("Update categoria SET estado=0, where id= ?");
+        ("Update categoria SET estado=0 where id= ?");
             ps.setInt(1, id);
             if(ps.executeUpdate() > 0){
                 resp = true;
@@ -159,7 +162,7 @@ public class CategoriaDAO implements CRUDGeneralInterface<Categoria>{
             rs.close();
         }
         catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, "Creando el objeto");
         }
         finally{
              ps = null;
