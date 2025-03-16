@@ -112,4 +112,16 @@ public class TareaInterfaz {
             System.out.println("El diseñador crea interfaces");
         }
     }
+    
+    // Interfaz Ordenable
+    interface Ordenable {
+        void ordenar();
+    }
+
+    class ListaNumeros implements Ordenable {
+        private List<Integer> numeros;
+        public ListaNumeros(List<Integer> numeros) { this.numeros = numeros; }
+        public void ordenar() { Collections.sort(numeros); }
+        public void mostrar() { System.out.println(numeros); }
+    }
 }
