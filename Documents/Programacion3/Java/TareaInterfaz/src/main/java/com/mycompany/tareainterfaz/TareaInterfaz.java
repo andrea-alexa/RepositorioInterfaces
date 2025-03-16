@@ -141,4 +141,21 @@ public class TareaInterfaz {
             System.out.println("El animal come con su hocico");
         }
     }
+    
+    // Interfaz Notificable
+    interface Notificable {
+        void enviarNotificacion();
+    }
+
+    class CorreoElectronico implements Notificable {
+        public void enviarNotificacion() {
+            System.out.println("Enviando correo electrónico...");
+        }
+    }
+
+    class SMS implements Notificable {
+        public void enviarNotificacion() {
+            System.out.println("Enviando mensaje SMS...");
+        }
+    }
 }
