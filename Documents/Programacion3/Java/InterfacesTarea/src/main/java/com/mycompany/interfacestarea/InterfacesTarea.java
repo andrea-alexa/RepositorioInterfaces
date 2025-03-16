@@ -56,4 +56,21 @@ public class InterfacesTarea {
             System.out.println("La bicicleta se detiene");
         }
     }
+    
+    // Interfaz Pago
+    interface Pago {
+        void procesarPago(double cantidad);
+    }
+
+    class PagoConTarjeta implements Pago {
+        public void procesarPago(double cantidad) {
+            System.out.println("Pago con tarjeta de: " + cantidad + " USD");
+        }
+    }
+
+    class PagoConEfectivo implements Pago {
+        public void procesarPago(double cantidad) {
+            System.out.println("Pago en efectivo de: " + cantidad + " USD");
+        }
+    }
 }
