@@ -32,4 +32,28 @@ public class InterfacesTarea {
             System.out.println("El gato salta");
         }
     }
+    
+    // Interfaz Vehiculo
+    interface Vehiculo {
+        void arrancar();
+        void detener();
+    }
+
+    class Coche implements Vehiculo {
+        public void arrancar() {
+            System.out.println("El coche arranca");
+        }
+        public void detener() {
+            System.out.println("El coche se detiene");
+        }
+    }
+
+    class Bicicleta implements Vehiculo {
+        public void arrancar() {
+            System.out.println("La bicicleta comienza a moverse");
+        }
+        public void detener() {
+            System.out.println("La bicicleta se detiene");
+        }
+    }
 }
