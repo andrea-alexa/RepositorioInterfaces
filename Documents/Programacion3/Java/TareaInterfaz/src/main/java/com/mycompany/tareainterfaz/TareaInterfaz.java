@@ -31,7 +31,7 @@ public class TareaInterfaz {
             System.out.println("El gato maulla");
         }
         public void mover() {
-            System.out.println("El gato salta");
+            System.out.println("El gato camina");
         }
     }
 }
