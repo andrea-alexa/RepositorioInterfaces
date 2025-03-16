@@ -75,4 +75,25 @@ public class TareaInterfaz {
             System.out.println("Pago en efectivo de: " + cantidad + " USD");
         }
     }
+    
+    // Interfaz FiguraGeometrica
+    interface FiguraGeometrica {
+        double area();
+        double perimetro();
+    }
+
+    class Circulo implements FiguraGeometrica {
+        private double radio;
+        public Circulo(double radio) { this.radio = radio; }
+        public double area() { return Math.PI * radio * radio; }
+        public double perimetro() { return 2 * Math.PI * radio; }
+    }
+
+    class Rectangulo implements FiguraGeometrica {
+        private double ancho, alto;
+        public Rectangulo(double ancho, double alto) { this.ancho = ancho; this.alto = alto; }
+        public double area() { return ancho * alto; }
+        public double perimetro() { return 2 * (ancho + alto); }
+    }
+
 }
