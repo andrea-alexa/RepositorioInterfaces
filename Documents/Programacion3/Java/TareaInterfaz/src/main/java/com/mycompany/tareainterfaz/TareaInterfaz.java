@@ -173,4 +173,25 @@ public class TareaInterfaz {
             return Double.compare(this.precio, otro.precio);
         }
     }
+    
+    // Interfaz Descontable
+    interface Descontable {
+        double calcularDescuento(double precio);
+    }
+
+    class DescuentoPorcentaje implements Descontable {
+        private double porcentaje;
+        public DescuentoPorcentaje(double porcentaje) { this.porcentaje = porcentaje; }
+        public double calcularDescuento(double precio) {
+            return precio - (precio * porcentaje / 100);
+        }
+    }
+
+    class DescuentoFijo implements Descontable {
+        private double cantidad;
+        public DescuentoFijo(double cantidad) { this.cantidad = cantidad; }
+        public double calcularDescuento(double precio) {
+            return precio - cantidad;
+        }
+    }
 }
