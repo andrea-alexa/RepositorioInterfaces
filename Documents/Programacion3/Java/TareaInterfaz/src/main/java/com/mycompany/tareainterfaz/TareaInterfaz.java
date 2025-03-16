@@ -95,5 +95,21 @@ public class TareaInterfaz {
         public double area() { return ancho * alto; }
         public double perimetro() { return 2 * (ancho + alto); }
     }
+    
+    // Interfaz Trabajador
+    interface Trabajador {
+        void trabajar();
+    }
 
+    class Desarrollador implements Trabajador {
+        public void trabajar() {
+            System.out.println("El desarrollador programa en Java");
+        }
+    }
+
+    class Diseñador implements Trabajador {
+        public void trabajar() {
+            System.out.println("El diseñador crea interfaces");
+        }
+    }
 }
