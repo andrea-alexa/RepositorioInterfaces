@@ -158,4 +158,19 @@ public class TareaInterfaz {
             System.out.println("Enviando mensaje SMS...");
         }
     }
+    
+    // Interfaz ComparableObjeto
+    interface ComparableObjeto {
+        int comparar(Object o);
+    }
+
+    class Producto implements ComparableObjeto {
+        private double precio;
+        public Producto(double precio) { this.precio = precio; }
+        public int comparar(Object o) {
+            if (!(o instanceof Producto)) return -1;
+            Producto otro = (Producto) o;
+            return Double.compare(this.precio, otro.precio);
+        }
+    }
 }
