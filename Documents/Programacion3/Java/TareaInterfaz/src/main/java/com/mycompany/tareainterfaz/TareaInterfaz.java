@@ -124,4 +124,21 @@ public class TareaInterfaz {
         public void ordenar() { Collections.sort(numeros); }
         public void mostrar() { System.out.println(numeros); }
     }
+    
+    // Interfaz Alimentación
+    interface Alimentacion {
+        void comer();
+    }
+
+    class Persona implements Alimentacion {
+        public void comer() {
+            System.out.println("La persona come con cubiertos");
+        }
+    }
+
+    class Animalito implements Alimentacion {
+        public void comer() {
+            System.out.println("El animal come con su hocico");
+        }
+    }
 }
